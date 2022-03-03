@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ghana Card Registration</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+        <style>
+            main {
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                background-image: url(https://www.transparenttextures.com/patterns/vintage-speckles.png);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <form class="box" id="register-form" onsubmit="submitForm(event);">
+                <div class="columns is-mobile is-vcentered" style="margin-bottom:0;">
+                    <div class="column is-narrow">
+                        <figure class="image is-128x128">
+                            <img src="/ghana-coat-of-arms.png">
+                        </figure>
+                    </div>
+                    <div class="column">
+                        <h1 class="title">Ghana Card Registration</h1>
+                    </div>
+                </div>
+
+                <div class="columns is-mobile">
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">First Name</label>
+                            <div class="control">
+                                <input name="firstName" class="input" type="text" placeholder="eg. Nana Yaw" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Last Name</label>
+                            <div class="control">
+                                <input name="lastName" class="input" type="text" placeholder="eg. Hammond" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Age</label>
+                            <div class="field has-addons">
+                                <p class="control is-expanded">
+                                    <input name="age" class="input" type="number" placeholder="eg. 25" required>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-static">
+                                        Years
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Birthday</label>
+                            <div class="control">
+                                <input name="birthday" class="input" type="date" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Phone Number</label>
+                            <div class="control">
+                                <input name="phone" class="input" type="tel" placeholder="eg. 0240000000" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-half">
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control">
+                                <input name="email" class="input" type="email" placeholder="eg. nanayaw@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="columns is-mobile" style="margin-bottom: 0;">
+                            <div class="column is-half">
+                                <div class="field">
+                                    <label class="label">Sex</label>
+                                    <div class="control is-expanded">
+                                        <div class="select is-fullwidth">
+                                            <select name="sex" required>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-half">
+                                <div class="field">
+                                    <label class="label">Marital Status</label>
+                                    <div class="control is-expanded">
+                                        <div class="select is-fullwidth">
+                                            <select name="maritalStatus" required>
+                                                <option value="single">Single</option>
+                                                <option value="married">Married</option>
+                                                <option value="divorced">Divorced</option>
+                                                <option value="widowed">Widowed</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Passport Photo</label>
+                            <div class="control">
+                                <div id="profile-photo-selector" class="file has-name">
+                                    <label class="file-label">
+                                        <input class="file-input" id="passportPhotoSelector" type="file" accept="image/*" required>
+                                        <span class="file-cta">
+                                            <span class="file-icon">
+                                                <ion-icon name="cloud-upload" size="large"></ion-icon>
+                                            </span>
+                                            <span class="file-label">
+                                                Choose a file…
+                                            </span>
+                                        </span>
+                                        <span class="file-name">
+                                            No file uploaded
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="notification" style="margin-top:40px">
+                                <label class="label">Card Number</label>
+                                <div class="control">
+                                    <input name="card" class="input is-static" type="text" value="GH-1090345669" readonly required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div>
+                    <button class="button is-medium is-black" type="submit">Register Applicant</button>
+                </div>
+            </form>
+            <div class="box" id="receipt" style="display: none;">
+                <div class="columns is-mobile is-vcentered" style="margin-bottom:0;">
+                    <div class="column is-narrow">
+                        <figure class="image is-128x128">
+                            <img src="/ghana-coat-of-arms.png">
+                        </figure>
+                    </div>
+                    <div class="column">
+                        <h1 class="title">Ghana Card Details</h1>
+                    </div>
+                </div>
+                <div class="columns is-mobile is-centered" style="margin-bottom:0;">
+                    <div class="column is-4">
+                        <figure class="image is-square">
+                            <img class="is-rounded" id="passportPhoto"/>
+                        </figure>
+                    </div>
+                </div>
+                <table class="table is-striped is-fullwidth">
+                    <tbody>
+                        <tr>
+                            <th>First Name:</th>
+                            <td id="firstName"></td>
+                        </tr>
+                        <tr>
+                            <th>Last Name:</th>
+                            <td id="lastName"></td>
+                        </tr>
+                        <tr>
+                            <th>Age:</th>
+                            <td id="age"></td>
+                        </tr>
+                        <tr>
+                            <th>Birthday:</th>
+                            <td id="birthday"></td>
+                        </tr>
+                        <tr>
+                            <th>Phone Number:</th>
+                            <td id="phone"></td>
+                        </tr>
+                        <tr>
+                            <th>Email:</th>
+                            <td id="email"></td>
+                        </tr>
+                        <tr>
+                            <th>Ghana Card Number:</th>
+                            <td id="card"></td>
+                        </tr>
+                        <tr>
+                            <th>Sex:</th>
+                            <td id="sex"></td>
+                        </tr>
+                        <tr>
+                            <th>Marital Status:</th>
+                            <td id="maritalStatus"></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <div>
+                    <button class="button is-medium is-black" id="re-register-button">Re-register Applicant</button>
+                </div>
+            </div>
+        </main>
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <script>
+            function submitForm(e) {
+                e.preventDefault();
+
+                const passportPhoto = URL.createObjectURL(document.getElementById('passportPhotoSelector').files[0]);
+
+                const form = document.getElementById('register-form');
+                const formData = new FormData(form);
+
+                formData.set('passportPhoto', passportPhoto);
+
+                const params = new URLSearchParams(formData);
+                const requestQueryString = params.toString();
+
+                const xhttp = new XMLHttpRequest();
+                
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        const registeredUser = JSON.parse(this.responseText);
+
+                        showReceipt(registeredUser);
+                    }
+                };
+
+                xhttp.open("POST", "/", true);
+
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                xhttp.send(requestQueryString);
+            }
+
+            function showReceipt(registeredUser) {
+                document.getElementById('register-form').setAttribute('style', 'display: none;');
+
+                for (property in registeredUser) {
+                    if (property != 'passportPhoto')
+                        document.getElementById(property).innerText = registeredUser[property];
+                }
+
+                document.getElementById('passportPhoto').setAttribute('src', registeredUser['passportPhoto']);
+
+                document.getElementById('receipt').setAttribute('style', 'display: block;');
+
+            }
+
+            // Set file name
+            const fileInput = document.querySelector('#profile-photo-selector input[type=file]');
+
+            fileInput.onchange = () => {
+                if (fileInput.files.length > 0) {
+                    const fileName = document.querySelector('#profile-photo-selector .file-name');
+
+                    fileName.textContent = fileInput.files[0].name;
+                }
+            }
+
+            // Re-register
+            const reRegisterButton = document.getElementById('re-register-button');
+
+            reRegisterButton.onclick = () => {
+                document.getElementById('receipt').setAttribute('style', 'display: none;');
+                document.getElementById('register-form').setAttribute('style', 'display: block;');
+            };
+        </script>
+    </body>
+</html>
